@@ -39,6 +39,7 @@ export default class SystemMonitor {
     }
 
     public close() {
+        // @ts-ignore
         clearInterval(this.interval as NodeJS.Timer);
     }
 

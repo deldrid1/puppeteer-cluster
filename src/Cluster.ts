@@ -453,7 +453,9 @@ export default class Cluster<JobData = any, ReturnData = any> extends EventEmitt
     public async close(): Promise<void> {
         this.isClosed = true;
 
+        // @ts-ignore
         clearInterval(this.checkForWorkInterval as NodeJS.Timer);
+        // @ts-ignore
         clearTimeout(this.workCallTimeout as NodeJS.Timer);
 
         // close workers
@@ -467,6 +469,7 @@ export default class Cluster<JobData = any, ReturnData = any> extends EventEmitt
 
         if (this.monitoringInterval) {
             await this.monitor();
+            // @ts-ignore
             clearInterval(this.monitoringInterval);
         }
 
